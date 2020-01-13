@@ -2,8 +2,8 @@
 namespace App\Admin\Controllers;
 
 use Encore\Admin\Controllers\AdminController;
-use App\Models\Campaign\VersionModel;
-use App\Models\Campaign\IntegrateModel;
+use App\Model\Version;
+use App\Model\Integrate;
 use Zhusaidong\GridExporter\Exporter;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -25,7 +25,7 @@ class IntegrateController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new IntegrateModel);
+        $grid = new Grid(new Integrate);
         $grid->column('id', __('ID'));
         $grid->column('chrIntergrateKey', __('关键字'))->sortable()->help('这一列是...');
         $grid->column('chrIntegrateName', __('集成号'))->sortable()->link('#');
@@ -77,7 +77,7 @@ class IntegrateController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(IntegrateModel::findOrFail($id));
+        $show = new Show(Integrate::findOrFail($id));
         $show->field('id', __('ID'));
         $show->field('chrIntergrateKey', __('关键字'));
         $show->field('chrIntegrateName', __('集成号'));
@@ -92,7 +92,7 @@ class IntegrateController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new IntegrateModel);
+        $form = new Form(new Integrate);
         $form->display('id', __('ID'));
         $form->text('chrIntergrateKey', __('关键字'));
         $form->text('chrIntegrateName', __('集成号'));

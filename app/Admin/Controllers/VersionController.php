@@ -3,7 +3,7 @@ namespace App\Admin\Controllers;
 
 use Encore\Admin\Controllers\AdminController;
 use James\Admin\Breadcrumb\BaseController;
-use App\Models\Campaign\VersionModel;
+use App\Model\Version;
 use Zhusaidong\GridExporter\Exporter;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -25,7 +25,7 @@ class VersionController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new VersionModel);
+        $grid = new Grid(new Version);
         $grid->column('id', __('ID'))->sortable();
         $grid->column('chrVersionKey', __('关键字'))->sortable()->help('这一列是...');
         $grid->column('chrVersionName', __('版本号'))->sortable()->link('#');
@@ -81,7 +81,7 @@ class VersionController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(VersionModel::findOrFail($id));
+        $show = new Show(Version::findOrFail($id));
         $show->field('id', __('ID'));
         $show->field('chrVersionKey', __('关键字'));
         $show->field('chrVersionName', __('版本号'));
@@ -97,7 +97,7 @@ class VersionController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new VersionModel);
+        $form = new Form(new Version);
         $form->display('id', __('ID'));
         $form->text('chrVersionKey', __('关键字'));
         $form->text('chrVersionName', __('版本号'));

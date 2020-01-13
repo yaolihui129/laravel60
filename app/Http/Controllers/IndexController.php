@@ -12,11 +12,11 @@ class IndexController extends Controller
 	}
 
     public function app(){
-        return view('campaign.apptest');
+        return view('campaign.appTest');
     }
     
     public function web(){
-        return view("campaign.webtest");
+        return view("campaign.web");
     }
 
     public function u8(){

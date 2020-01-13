@@ -2,7 +2,7 @@
 namespace App\Admin\Controllers;
 
 use Encore\Admin\Controllers\AdminController;
-use App\Models\Campaign\ResourceModel;
+use App\Model\ResourceModel;
 use Zhusaidong\GridExporter\Exporter;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
