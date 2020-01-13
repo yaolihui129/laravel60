@@ -113,7 +113,7 @@
                     </a>
                 </div>
                 <div class="col-md-3">
-                    <a href="http://10.10.12.165:8080" class=" common-box bg1" target="_blank">
+                    <a href="https://gf.jira.yonyou.com/" class=" common-box bg1" target="_blank">
                         <img src="{{url('images/campaign/u8-13.png')}}"/>
                         <p>（JIRA）Jira系统</p>
                     </a>
