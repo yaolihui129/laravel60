@@ -27,7 +27,7 @@ class LoginController extends Controller
 		$user = request(['email','password']);
 		$is_remember = boolval(request('is_remember'));
 		if (Auth::attempt($user,$is_remember)) {
-				return redirect('/posts');
+				return back();
 		}
 		//渲染
 		return \Redirect::back()->withError("邮箱密码不匹配");
@@ -39,9 +39,6 @@ class LoginController extends Controller
 		return redirect('/login');
 	}
 
-	public function welcome()
-    {
-        return redirect("/login");
-    }
+
 
 }

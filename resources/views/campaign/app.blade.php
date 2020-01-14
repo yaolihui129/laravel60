@@ -43,8 +43,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav  navbar-right col-md-3">
-                @if(!Auth::check())
-                    <li><a href="javascript:void(0);" id="btnLogin">登录</a></li>
+                @if(!Auth::check())                  
+					<li><a data-toggle="modal" href="#login">登录</a></li>
                     <li><a href="{{url('/register')}}" target="_blank">注册</a></li>
                 @else
                     <li><a href="{{url('/desktop')}}" target="_blank">我的控制台</a></li>
@@ -52,12 +52,12 @@
                 @endif
             </ul>
             <ul class="nav navbar-nav navbar-right  col-md-7">
-                <li class="active"><a href="{{url('')}}">首页</a></li>
+                <li class="active"><a href="{{url('/')}}">首页</a></li>
                 <li id="webtest"><a href="{{url('/camp/webtest')}}">Web测试</a></li>
                 <li id="apptest"><a href="{{url('/camp/apptest')}}">App测试</a></li>
                 @if(Auth::check())
+                    <li id="u8"><a href="{{url('/camp/u8')}}">U8专区</a></li>
 					<li id="blog"><a href="{{url('/posts')}}" target="_blank">测试文档</a></li>
-                    <li id="u8"><a href="{{url('/camp/u8')}}" target="_blank">U8专区</a></li>
                     <li id="ys"><a href="{{url('/camp/ys/ysIndex')}}" target="_blank">YS专区</a></li>
                 @endif
             </ul>
@@ -66,24 +66,14 @@
 </nav>
 @yield('content')
 @include('layout.footer')
+@include('layout.login')
 <script type="text/javascript">
     var start = location.href.lastIndexOf("/") + 1;
     var dhId = location.href.substr(start);
     if ($("#" + dhId).length > 0) {
         $("#" + dhId).siblings().removeClass("active");
         $("#" + dhId).addClass("active");
-    }
-    $("#btnLogin").on("click", function () {
-        layer.open({
-            type: 2,
-            title: "登录",
-            skin: '', // 加上边框
-            area: ["600px", "450px"], // 宽高
-            scrollbar: false,
-            maxmin: false,
-            content: CommonUtil.getRootPath() + "/login"
-        });
-    });
+    }    
     $(window).scroll(function () {
         if ($(window).scrollTop() >= 600) {
             $(".value").numberRock({
