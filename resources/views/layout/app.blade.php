@@ -1,80 +1,98 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UPCAT官网</title>
+    <!-- Bootstrap -->
+    <link href="{{url('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url('css/campaign/carousel.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{url('css/campaign/common.css')}}"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="static/jquery-1.11.1/jquery.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="static/bootstrap-3.3.0/js/bootstrap.min.js"></script> -->
+    <script src="{{url('/js/jquery/jquery-2.1.1.min.js')}}"></script>
+    <script src="{{url('/js/bootstrap/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('/js/common.js')}}"></script>
+    <script type="text/javascript" src="{{url('/js/plugins/layer/layer.js')}}"></script>
+    {{--<script src="{{url('/js/campaign/main.js')}}" type="text/javascript" charset="utf-8"></script>--}}
+    <script src="{{url('/js/campaign/count.js')}}"></script>
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('登录') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('注册') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('注销') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=""><img src="{{url('images/campaign/logo.png')}}"/></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav  navbar-right col-md-3">
+                @if(!Auth::check())                  
+					<li><a data-toggle="modal" href="#login">登录</a></li>
+                    <li><a href="{{url(env('APP_PATH', '').'/register')}}" target="_blank">注册</a></li>
+                @else
+                    <li><a href="{{url(env('APP_PATH', '').'/desktop')}}" target="_blank">我的控制台</a></li>
+                    <li class="my-control"><a href="{{url('/logout')}}">退出</a></li>
+                @endif
+            </ul>
+            <ul class="nav navbar-nav navbar-right  col-md-7">
+                <li class="active"><a href="{{url(env('APP_PATH', '').'/')}}">首页</a></li>
+                <li id="webtest"><a href="{{url(env('APP_PATH', '').'/web')}}">Web测试</a></li>
+                <li id="apptest"><a href="{{url(env('APP_PATH', '').'/app')}}">App测试</a></li>
+                @if(Auth::check())
+                    <li id="u8"><a href="{{url(env('APP_PATH', '').'/u8')}}">U8专区</a></li>
+					<li id="blog"><a href="{{url(env('APP_PATH', '').'/posts')}}" target="_blank">测试文档</a></li>
+                    <li id="ys"><a href="{{url(env('APP_PATH', '').'/ys/index')}}" target="_blank">YS专区</a></li>
+                @endif
+            </ul>
+        </div>
     </div>
+</nav>
+@yield('content')
+@include('layout.footer')
+@include('layout.login')
+<script type="text/javascript">
+    var start = location.href.lastIndexOf("/") + 1;
+    var dhId = location.href.substr(start);
+    if ($("#" + dhId).length > 0) {
+        $("#" + dhId).siblings().removeClass("active");
+        $("#" + dhId).addClass("active");
+    }    
+    $(window).scroll(function () {
+        if ($(window).scrollTop() >= 600) {
+            $(".value").numberRock({
+                speed: 40,
+                count: 100
+            })
+            $(".value2").numberRock({
+                speed: 30,
+                count: 500
+            })
+            $(".value3").numberRock({
+                speed: 20,
+                count: 5000
+            })
+        }
+    })
+
+
+</script>
 </body>
+
 </html>

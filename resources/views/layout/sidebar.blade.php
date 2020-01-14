@@ -44,7 +44,7 @@
         <ul class="category-root list-group">
             @foreach($topics as $topic)
 			<li class="list-group-item">
-				<a href="/topic/{{$topic->id}}">{{$topic->name}}</a>
+				<a href="{{env('APP_PATH', '')}}/topic/{{$topic->id}}">{{$topic->name}}</a>
 			</li>
 			@endforeach
         </ul>

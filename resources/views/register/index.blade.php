@@ -7,7 +7,7 @@
 		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 		<meta name="description" content="">
 		<meta name="author" content="">
-		<link rel="icon" href="../../favicon.ico">
+		<link rel="icon" href="favicon.ico">
 		<title>注册</title>
 		<!-- Bootstrap core CSS -->
 		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<form class="form-signin" method="POST" action="/register">
+			<form class="form-signin" method="POST" action="{{env('APP_PATH', '')}}/register">
 				{{csrf_field()}}
 				<h2 class="form-signin-heading">请注册</h2>
 				<label for="name" class="sr-only">名字</label>

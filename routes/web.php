@@ -8,41 +8,33 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|---------------------------------------------------------------------------
-| 测试示例
-|---------------------------------------------------------------------------
-| Route::get($uri, $callback);
-| Route::post($uri, $callback);
-| Route::put($uri, $callback);
-| Route::patch($uri, $callback);
-| Route::delete($uri, $callback);
-| Route::options($uri, $callback);
-| Route::redirect('/here', '/there'，301);重定向
 */
 //首页
-Route::get ( "/", "IndexController@getIndex" );
-Route::get('/camp/webtest',"IndexController@web");
-Route::get('/camp/apptest',"IndexController@app");
-Route::get('/camp/u8',"IndexController@u8");
+Route::get ( "/", "IndexController@index" );
+Route::get('/web',"IndexController@web");
+Route::get('/app',"IndexController@app");
+
 
 //文章列表页
 Route::get('/posts','PostController@index' );
 
-
 // 注册页面
-Route::get ('/register', '\App\Http\Controllers\RegisterController@index');
+Route::get ('/register', 'RegisterController@index');
 // 注册行为
-Route::post ('/register', '\App\Http\Controllers\RegisterController@register');
+Route::post ('/register', 'RegisterController@register');
 // 登录页面
-Route::get ('/login', '\App\Http\Controllers\LoginController@index');
+Route::get ('/login', 'LoginController@index');
 // 登录行为
-Route::post ('/login', '\App\Http\Controllers\LoginController@login');
+Route::post ('/login', 'LoginController@login');
 
 Route::group ([
 	'middleware' => 'auth'
 	],function(){
 		//登出行为
 		Route::get('/logout','LoginController@logout' );
+		Route::get('/u8',"IndexController@u8");
+		//初始化页面
+		Route::get('ys/index',"YsController@index");
 
 		//个人设置
 		Route::get('/user/me/setting','UserController@setting' );
@@ -85,7 +77,6 @@ Route::group ([
 
 Route::group([
     'prefix'=>'camp',
-    'namespace'=>'Campaign'
 ],function(){
     //版本号
     Route::get('/version', 'VersionController@index');
@@ -121,16 +112,11 @@ Route::group([
 /**
  * YonSuite质量全景分析
  */
-Route::group ( [
-    'prefix'=>'camp',
-    'namespace' => 'Campaign',
-//    'middleware' => 'auth'
-], function () {
+
     Route::group ( [
         'prefix' => 'ys',
     ], function () {
-        //初始化页面
-        Route::get('/ysIndex',"YsController@index");
+        
         //初始化版本号
         Route::get('/getVersion',"VersionController@getVersion");
         //初始化集成号
@@ -139,13 +125,12 @@ Route::group ( [
         Route::get('/getYSResource',"YsController@getYSResource");
 
     } );
-} );
+
 
 
 //测试工具链接基下载
 Route::group ( [
     'prefix'=>'camp',
-    'namespace' => 'Campaign',
     'middleware' => 'auth'
 ], function () {
 

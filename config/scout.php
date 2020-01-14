@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'prefix' => env('SCOUT_PREFIX', 'laravel60_test'),
+    'prefix' => env('SCOUT_PREFIX', 'laravel60'),
 
     /*
     |--------------------------------------------------------------------------

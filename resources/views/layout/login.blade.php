@@ -1,7 +1,7 @@
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form action="{{url('/login')}}" method="post" enctype='multipart/form-data' class="form-horizontal" role="form"   >
+                <form action="{{url(env('APP_PATH', '').'/login')}}" method="post" enctype='multipart/form-data' class="form-horizontal" role="form"   >
                     {!! csrf_field() !!}
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">

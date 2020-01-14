@@ -8,11 +8,11 @@ use App\Http\Requests;
 class IndexController extends Controller
 {
 	public function index(){
-		return view('index');
+		return view('campaign.index');
 	}
 
     public function app(){
-        return view('campaign.appTest');
+        return view('campaign.app');
     }
     
     public function web(){

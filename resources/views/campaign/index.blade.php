@@ -1,5 +1,5 @@
 
-@extends('campaign.app') @section('content')
+@extends('layout.app') @section('content')
 		<!-- Carousel ========================= -->
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->

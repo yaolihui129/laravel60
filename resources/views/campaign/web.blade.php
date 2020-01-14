@@ -1,5 +1,5 @@
 
-@extends('campaign.app') @section('content')
+@extends('layout.app') @section('content')
 		<!-- time-line ================================================== -->
 		<div id="myCarousel" class="carousel slide time-line-box" data-ride="carousel">
 			<!-- Indicators -->

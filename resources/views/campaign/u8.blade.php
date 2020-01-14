@@ -1,4 +1,4 @@
-@extends('campaign.app') @section('content')
+@extends('layout.app') @section('content')
     <!-- time-line ================================================== -->
     <div class="container m-100 u8">
         <h3>U8工具箱</h3>
