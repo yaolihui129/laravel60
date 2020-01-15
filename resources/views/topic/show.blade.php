@@ -16,7 +16,7 @@
                 <h4 class="modal-title" id="myModalLabel">我的文章</h4>
             </div>
             <div class="modal-body">
-                <form action="{{env('APP_PATH', '')}}/topic/{{$topic->id}}/submit" method="POST">
+                <form action="{{asset('/topic')}}/{{$topic->id}}/submit" method="POST">
                     {{csrf_field()}}
                     @foreach($myposts as $post)
                     <div class="checkbox">
@@ -42,12 +42,12 @@
                 @foreach($posts as $post)
                 <div class="blog-post" style="margin-top: 30px">
                     <p class="">
-						<a href="{{env('APP_PATH', '')}}/user/{{$post->user->id}}">
+						<a href="{{asset('/user')}}/{{$post->user->id}}">
 							{{$post->user->name}}
 						</a> 
 						{{$post->created_at->diffForHumans()}}
 					</p>
-                    <p class=""><a href="{{env('APP_PATH', '')}}/posts/{{$post->id}}" >{{$post->title}}</a></p>
+                    <p class=""><a href="{{asset('/posts')}}/{{$post->id}}" >{{$post->title}}</a></p>
                     <p> {!!Str::limit($post->content,10,'(...)')!!}</p>
                 </div>
                 @endforeach

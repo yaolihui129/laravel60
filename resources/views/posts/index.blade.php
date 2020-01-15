@@ -11,15 +11,15 @@
                 </ol><!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/images/44287191gw1excbq6tb3rj21400migrz.jpg" alt="..." />
+                        <img src="{{asset('/images/44287191gw1excbq6tb3rj21400migrz.jpg')}}" alt="..." />
                         <div class="carousel-caption">...</div>
                     </div>
                     <div class="item">
-                        <img src="/images/44287191gw1excbq5iwm6j21400min3o.jpg" alt="..." />
+                        <img src="{{asset('/images/44287191gw1excbq5iwm6j21400min3o.jpg')}}" alt="..." />
                         <div class="carousel-caption">...</div>
                     </div>
                     <div class="item">
-                        <img src="/images/44287191gw1excbq4kx57j21400migs4.jpg" alt="..." />
+                        <img src="{{asset('/images/44287191gw1excbq4kx57j21400migs4.jpg')}}" alt="..." />
                         <div class="carousel-caption">...</div>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
         <div>
             @foreach($posts as $post)
             <div class="blog-post">
-                <h2 class="blog-post-title"><a href="{{env('APP_PATH', '')}}/posts/{{$post->id}}" >{{$post->title}}</a></h2>
-                <p class="blog-post-meta">{{$post->created_at}} by <a href="/user/{{$post->user_id}}">{{$post->user->name}}</a></p>
+                <h2 class="blog-post-title"><a href="{{asset('/posts')}}/{{$post->id}}" >{{$post->title}}</a></h2>
+                <p class="blog-post-meta">{{$post->created_at}} by <a href="{{asset('/user')}}/{{$post->user_id}}">{{$post->user->name}}</a></p>
                 {!!Str::limit($post->content,10,'(...)')!!}
                 <p class="blog-post-meta">赞 {{$post->zans_count}}  | 评论 {{$post->comments_count}}</p>
             </div>

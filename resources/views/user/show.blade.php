@@ -3,7 +3,7 @@
 @section("content")
     <div class="col-sm-8">
 		<p>
-			<img src="{{$user->avatar}}" alt="{{$user->avatar}}" class="img-rounded" style="border-radius:500px; height: 40px">
+			<img src="{{asset('/')}}/{{$user->avatar}}" alt="{{$user->avatar}}" class="img-rounded" style="border-radius:500px; height: 40px">
 			{{$user->name}}
 		</p>
 		<footer>关注：{{$user->stars_count}}｜粉丝：{{$user->fans_count}}｜文章：{{$user->posts_count}}</footer>
@@ -21,13 +21,13 @@
                     @foreach($posts as $post)
                     <div class="blog-post" style="margin-top: 30px">
                         <p class="">
-							<a href="{{env('APP_PATH', '')}}/user/{{$post->user->id}}">
+							<a href="{{asset('/user')}}/{{$post->user->id}}">
 								{{$post->user->name}}
 							</a> 
 							{{$post->created_at->diffForHumans()}}
 						</p>
                         <p class="">
-							<a href="{{env('APP_PATH', '')}}/posts/{{$post->id}}" >
+							<a href="{{asset('/posts')}}/{{$post->id}}" >
 								{{$post->title}}
 							</a>
 						</p>
@@ -39,7 +39,7 @@
                 <div class="tab-pane" id="tab_2">
                     @foreach($susers as $user)
                     <div class="blog-post" style="margin-top: 30px">
-                        <p class=""><a href="{{env('APP_PATH', '')}}/user/{{$post->user_id}}">{{$user->name}}</a></p>
+                        <p class=""><a href="{{asset('/user')}}/{{$post->user_id}}">{{$user->name}}</a></p>
                         <p class="">关注：{{$user->stars_count}} | 粉丝：{{$user->fans_count}}｜ 文章：{{$user->posts_count}}</p>
 
                         @include('user.badges.like', ['target_user' => $user])
@@ -52,7 +52,7 @@
                     @foreach($fusers as $user)
                         <div class="blog-post" style="margin-top: 30px">
                             <p class="">
-								<a href="{{env('APP_PATH', '')}}/user/{{$post->user_id}}">
+								<a href="{{asset('/user')}}/{{$post->user_id}}">
 									{{$user->name}}
 								</a>
 							</p>

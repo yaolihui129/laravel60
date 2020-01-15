@@ -116,7 +116,6 @@ Route::group([
     Route::group ( [
         'prefix' => 'ys',
     ], function () {
-        
         //初始化版本号
         Route::get('/getVersion',"VersionController@getVersion");
         //初始化集成号
@@ -133,7 +132,6 @@ Route::group ( [
     'prefix'=>'camp',
     'middleware' => 'auth'
 ], function () {
-
     Route:: resource( "/ult", "U8Controller@ult" );
     Route:: resource( "/mtt", "U8Controller@mtt" );
     Route:: resource( "/sett", "U8Controller@sett" );

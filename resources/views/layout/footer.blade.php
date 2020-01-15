@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img src="{{url('/images/campaign/footer-logo.png')}}"/>
+                <img src="{{asset('/images/campaign/footer-logo.png')}}"/>
             </div>
             <div class="col-md-8">
                 <div class="row">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-md-3">
                         <p class="title">关注我们</p>
-                        <img src="{{url('/images/campaign/code.png')}}"/>
+                        <img src="{{asset('/images/campaign/code.png')}}"/>
                     </div>
                 </div>
     

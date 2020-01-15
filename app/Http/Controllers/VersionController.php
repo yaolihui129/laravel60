@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Campaign;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Model\Version;

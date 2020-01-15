@@ -39,26 +39,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""><img src="{{url('images/campaign/logo.png')}}"/></a>
+            <a class="navbar-brand" href=""><img src="{{asset('images/campaign/logo.png')}}"/></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav  navbar-right col-md-3">
                 @if(!Auth::check())                  
 					<li><a data-toggle="modal" href="#login">登录</a></li>
-                    <li><a href="{{url(env('APP_PATH', '').'/register')}}" target="_blank">注册</a></li>
+                    <li><a href="{{asset('/register')}}">注册</a></li>
                 @else
-                    <li><a href="{{url(env('APP_PATH', '').'/desktop')}}" target="_blank">我的控制台</a></li>
-                    <li class="my-control"><a href="{{url('/logout')}}">退出</a></li>
+                    <li><a href="{{asset('/desktop')}}" target="_blank">我的控制台</a></li>
+                    <li class="my-control"><a href="{{asset('/logout')}}">退出</a></li>
                 @endif
             </ul>
             <ul class="nav navbar-nav navbar-right  col-md-7">
-                <li class="active"><a href="{{url(env('APP_PATH', '').'/')}}">首页</a></li>
-                <li id="webtest"><a href="{{url(env('APP_PATH', '').'/web')}}">Web测试</a></li>
-                <li id="apptest"><a href="{{url(env('APP_PATH', '').'/app')}}">App测试</a></li>
+                <li class="active"><a href="{{asset('/')}}">首页</a></li>
+                <li id="web"><a href="{{asset('/web')}}">Web测试</a></li>
+                <li id="app"><a href="{{asset('/app')}}">App测试</a></li>
                 @if(Auth::check())
-                    <li id="u8"><a href="{{url(env('APP_PATH', '').'/u8')}}">U8专区</a></li>
-					<li id="blog"><a href="{{url(env('APP_PATH', '').'/posts')}}" target="_blank">测试文档</a></li>
-                    <li id="ys"><a href="{{url(env('APP_PATH', '').'/ys/index')}}" target="_blank">YS专区</a></li>
+                    <li id="u8"><a href="{{asset('/u8')}}">U8专区</a></li>
+					<li id="blog"><a href="{{asset('/posts')}}" target="_blank">测试文档</a></li>
+                    <li id="ys"><a href="{{asset('/ys/index')}}" target="_blank">YS专区</a></li>
                 @endif
             </ul>
         </div>

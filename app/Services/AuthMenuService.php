@@ -269,31 +269,8 @@ class AuthMenuService {
 		return $dAuths;
 	}
 	
-	/**
-	 * 添加菜单
-	 *
-	 * @param unknown $menu        	
-	 * @param unknown $user        	
-	 */
-	public function insert($menu, $user) {
-		DB::insert ( "insert into sys_menus (chrMenuCode,chrMenuName,chrMemo,intCreaterID,intMenuAsc,intParentID,chrMenuMethodArgs,chrMenuClass)
-				values (uuid(),?,?,?,?,?,?,?)", [ 
-				$menu ['menuName'],
-				$menu ['memo'],
-				$user->id,
-				$menu ['menuAsc'],
-				$menu ['parentId'],
-				$menu ['menuArgs'],
-				"home-page" 
-		] );
-	}
 	
-	/**
-	 * 删除
-	 */
-	public function delete($ids) {
-		DB::delete ( "delete from sys_menus where id in ($ids)" );
-	}
+	
 	
 	/**
 	 * 查看、编辑
@@ -306,22 +283,7 @@ class AuthMenuService {
 		return $res [0];
 	}
 	
-	/**
-	 * 修改
-	 *
-	 * @param unknown $id        	
-	 */
-	public function update($id, $data) {
-		DB::update ( "update sys_menus set chrMenuName=?,intMenuAsc=?,chrMenuMethodArgs=?,
-		intParentID=?,chrMemo=? where id=?", [ 
-				$data ['menuName'],
-				$data ['menuAsc'],
-				$data ['menuArgs'],
-				$data ['parentId'],
-				$data ['memo'],
-				$id 
-		] );
-	}
+	
 }
 
 ?>
