@@ -32,6 +32,11 @@ class LoginController extends Controller
 		//渲染
 		return \Redirect::back()->withError("邮箱密码不匹配");
 	}
+	//用公司域账号登录
+	public function jiraLogin(){
+		
+	}
+	
 
 	//登出行为
 	public function logout(){
