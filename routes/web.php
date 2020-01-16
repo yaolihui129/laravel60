@@ -70,7 +70,7 @@ Route::group ([
 	Route::post('/posts','PostController@store' );
 	Route::get('/posts/create','PostController@create' );
 	// 文章搜索页
-	Route::post('/posts/search', 'PostController@search');
+	Route::get('/posts/search', 'PostController@search');
 	//更新文章
 	Route::get('/posts/{post}/edit','PostController@edit')->where('post','[0-9]+');
 	Route::put('/posts/{post}','PostController@update' )->where('post','[0-9]+');

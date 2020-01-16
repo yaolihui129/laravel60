@@ -38,18 +38,18 @@ class ESInit extends Command
      */
     public function handle()
     {
-		//1.创建template
+		// 创建template
 		$client = new Client();
-		
+
 		$url = config('scout.elasticsearch.hosts')[0] . '/_template/tmp';
-		
+
 		try {
 			$client->delete($url);
 		} catch (\Exception $e) {
-			$this->info("=========delete模版出现错误========" . $e->getMessage());
+			$this->info("===delete模版出现错误==" . $e->getMessage());
 		}
-		
-		
+
+
 		$param = [
 			'json' => [
 				'template' => config('scout.elasticsearch.index'),
@@ -69,49 +69,44 @@ class ESInit extends Command
 				],
 			],
 		];
-		
 		try {
 			$client->put($url, $param);
 		} catch (\Exception $e) {
 			$this->info("===put模版出现错误==" . $e->getMessage());
 		}
-		
-		
-		$this->info("=====================创建模板成功=====================");
-		
-		
-		//2.创建index
-		 $url = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
-		 try {
+
+
+		$this->info("========= 创建模版成功 ========");
+
+		// 创建index
+		$url = config('scout.elasticsearch.hosts')[0] . '/' . config('scout.elasticsearch.index');
+		try {
 			$client->delete($url);
 		} catch (\Exception $e) {
-			$this->info("===========delete索引出现错误==============" . $e->getMessage());
+			$this->info("===delete索引出现错误==" . $e->getMessage());
 		}
-		
-		
 		$param = [
-			 'json' => [
-				 'settings' => [
-					 'refresh_interval' => '5s',
-					 'number_of_shards' => 1,
-					 'number_of_replicas' => 0,
-				 ],
-				 'mappings' => [
-					 'posts' => [
-						 '_all' => [
-							 'enabled' => false
-						 ]
-					 ]
-				 ]
+			'json' => [
+				'settings' => [
+					'refresh_interval' => '5s',
+					'number_of_shards' => 1,
+					'number_of_replicas' => 0,
+				],
+				'mappings' => [
+					'posts' => [
+						'_all' => [
+							'enabled' => false
+						]
+					]
+				]
 			]
 		];
-		 
 		try {
 			$client->put($url, $param);
 		} catch (\Exception $e) {
 			$this->info("===put索引出现错误==" . $e->getMessage());
 		}
-		
-		$this->info("=====================创建索引成功=====================");
-    }
+
+		$this->info("========= 创建索引成功 ========");
+	}
 }
