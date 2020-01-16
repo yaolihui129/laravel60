@@ -1,4 +1,4 @@
-@extends("admin.layout.main")
+@extends("back.layout.main")
 
 @section("content")
     <!-- Main content -->

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Back\Controllers;
+use \App\Model\Post;
 
 class PostController extends Controller{
    // 首页

@@ -3,6 +3,7 @@
 namespace App\Back\Controllers;
 use Illuminate\Http\Request;
 use \App\Model\BackUser;
+use \App\Model\BackRole;
 class UserController extends Controller{
    // 管理员列表页面
    public function index(){
@@ -31,9 +32,9 @@ class UserController extends Controller{
 
    // 用户角色页面
    public function role(\App\Model\BackUser $user){
-	   $roles = BackUser::all();
+	   $roles = BackRole::all();
 	   $myRoles = $user->roles;
-	   return view('/admin/user/role', compact('roles', 'myRoles', 'user'));
+	   return view('/back/user/role', compact('roles', 'myRoles', 'user'));
    }
 
    // 储存用户角色

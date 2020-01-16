@@ -13,7 +13,7 @@
                             </div>
                             <!-- /.box-header -->
                             <!-- form start -->
-                            <form role="form" action="{{asset('/admin/users/store')}}" method="POST">
+                            <form role="form" action="{{asset('/back/users/store')}}" method="POST">
                                 {{csrf_field()}}
                                 <div class="box-body">
                                     <div class="form-group">

@@ -11,29 +11,29 @@
                     <span class="pull-right-container"></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{asset('/admin/permissions')}}"><i class="fa fa-circle-o"></i> 权限管理</a></li>
-                    <li><a href="{{asset('/admin/users')}}"><i class="fa fa-circle-o"></i> 用户管理</a></li>
-                    <li><a href="{{asset('/admin/roles')}}"><i class="fa fa-circle-o"></i> 角色管理</a></li>
+                    <li><a href="{{asset('/back/permissions')}}"><i class="fa fa-circle-o"></i> 权限管理</a></li>
+                    <li><a href="{{asset('/back/users')}}"><i class="fa fa-circle-o"></i> 用户管理</a></li>
+                    <li><a href="{{asset('/back/roles')}}"><i class="fa fa-circle-o"></i> 角色管理</a></li>
                 </ul>
             </li>
             @endcan
             @can("post")
             <li class="active treeview">
-                <a href="{{asset('/admin/posts')}}">
+                <a href="{{asset('/back/posts')}}">
                     <i class="fa fa-dashboard"></i> <span>文章管理</span>
                 </a>
             </li>
                 @endcan
                 @can("topic")
             <li class="active treeview">
-                <a href="{{asset('/admin/topics')}}">
+                <a href="{{asset('/back/topics')}}">
                     <i class="fa fa-dashboard"></i> <span>专题管理</span>
                 </a>
             </li>
                 @endcan
                         @can("notice")
             <li class="active treeview">
-                <a href="{{asset('/admin/notices')}}">
+                <a href="{{asset('/back/notices')}}">
                     <i class="fa fa-dashboard"></i> <span>通知管理</span>
                 </a>
             </li>

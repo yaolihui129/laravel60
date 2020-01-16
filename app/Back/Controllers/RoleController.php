@@ -4,15 +4,13 @@ namespace App\Back\Controllers;
 
 class RoleController extends Controller{
    // 角色列表
-   public function index()
-   {
+   public function index(){
 	   $roles = \App\Model\BackRole::paginate(10);
 	   return view("/back/role/index", compact('roles'));
    }
 
    // 创建角色
-   public function create()
-   {
+   public function create(){
 	   return view("/back/role/add");
    }
 

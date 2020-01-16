@@ -15,7 +15,7 @@
                             </div>
                             <!-- /.box-header -->
                             <!-- form start -->
-                            <form role="form" action="{{asset('/admin/permissions/store')}}" method="POST">
+                            <form role="form" action="{{asset('/back/permissions/store')}}" method="POST">
                                 {{csrf_field()}}
                                 <div class="box-body">
                                     <div class="form-group">

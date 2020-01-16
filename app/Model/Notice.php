@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Model;
 
-class Zan extends Model
+class Notice extends Model
 {
     //
 	

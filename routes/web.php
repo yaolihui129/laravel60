@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 */
 //首页
-Route::get ( "/", "IndexController@index" );
+Route::get ('/', "IndexController@index" );
 Route::get('/web',"IndexController@web");
 Route::get('/app',"IndexController@app");
 
@@ -24,7 +24,7 @@ Route::get ('/register', 'RegisterController@index');
 // 注册行为
 Route::post ('/register', 'RegisterController@register');
 // 登录页面
-Route::get ('/login', 'LoginController@index');
+Route::get ('/login', 'LoginController@index')->name("login");
 // 登录行为
 Route::post ('/login', 'LoginController@login');
 
@@ -137,18 +137,18 @@ Route::group ( [
     'prefix'=>'camp',
     'middleware' => 'auth'
 ], function () {
-    Route:: resource( "/ult", "U8Controller@ult" );
-    Route:: resource( "/mtt", "U8Controller@mtt" );
-    Route:: resource( "/sett", "U8Controller@sett" );
-    Route:: resource( "/dult", "U8Controller@dult" );
-    Route:: resource( "/pct", "U8Controller@pct" );
-    Route:: resource( "/js", "U8Controller@js" );
-    Route:: resource( "/lsbcx", "U8Controller@lsbcx" );
-    Route:: resource( "/gdi", "U8Controller@gdi" );
-    Route:: resource( "/sjkjgdb", "U8Controller@sjkjgdb" );
-    Route:: resource( "/wj", "U8Controller@wj" );
-    Route:: resource( "/xn", "U8Controller@xn" );
-    Route:: resource( "/ylzx", "U8Controller@ylzx" );
+    Route:: get( "/ult", "IndexController@ult" );
+    Route:: get( "/mtt", "IndexController@mtt" );
+    Route:: get( "/sett", "IndexController@sett" );
+    Route:: get( "/dult", "IndexController@dult" );
+    Route:: get( "/pct", "IndexController@pct" );
+    Route:: get( "/js", "IndexController@js" );
+    Route:: get( "/lsbcx", "IndexController@lsbcx" );
+    Route:: get( "/gdi", "IndexController@gdi" );
+    Route:: get( "/sjkjgdb", "IndexController@sjkjgdb" );
+    Route:: get( "/wj", "IndexController@wj" );
+    Route:: get( "/xn", "IndexController@xn" );
+    Route:: get( "/ylzx", "IndexController@ylzx" );
 } );
 
 
@@ -162,18 +162,19 @@ Route::group([
     Route::get('/login', 'LoginController@index');
     // 登录行为
     Route::post('/login', 'LoginController@login');
-    // 登出行为
-    Route::get('/logout', 'LoginController@logout');
+    
 
     Route::group(['middleware' => 'auth:back'], function(){
         // 首页
         Route::get('/home', 'HomeController@index');
-
+		// 登出行为
+		Route::get('/logout', 'LoginController@logout');
+		
         Route::group(['middleware' => 'can:system'], function(){
             // 管理人员模块
             Route::get("/users", 'UserController@index');
             Route::get("/users/create", 'UserController@create');
-            Route::post("/users/store", 'AppUserController@store');
+            Route::post("/users/store", 'UserController@store');
             Route::get("/users/{user}/role", 'UserController@role');
             Route::post("/users/{user}/role", 'UserController@storeRole');
             // 角色

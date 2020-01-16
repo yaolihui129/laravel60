@@ -10,7 +10,7 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">角色列表</h3>
                         </div>
-                        <a type="button" class="btn " href="{{asset('/admin/roles/create')}}" >增加角色</a>
+                        <a type="button" class="btn " href="{{asset('/back/roles/create')}}" >增加角色</a>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table class="table table-bordered">
@@ -26,7 +26,7 @@
                                     <td>{{$role->name}}</td>
                                     <td>{{$role->description}}</td>
                                     <td>
-                                        <a type="button" class="btn" href="{{asset('/admin/roles')}}/{{$role->id}}/permission" >权限管理</a>
+                                        <a type="button" class="btn" href="{{asset('/back/roles')}}/{{$role->id}}/permission" >权限管理</a>
                                     </td>
                                 </tr>
                                     @endforeach

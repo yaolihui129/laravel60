@@ -34,7 +34,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">登陆</p>
 
-        <form action="{{asset('/admin/login')}}" method="post">
+        <form action="{{asset('/back/login')}}" method="post">
             {{csrf_field()}}
             <div class="form-group has-feedback">
                 <input name="name" type="text" class="form-control" placeholder="域账号">
