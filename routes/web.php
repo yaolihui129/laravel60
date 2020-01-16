@@ -13,6 +13,17 @@
 Route::get ('/', "IndexController@index" );
 Route::get('/web',"IndexController@web");
 Route::get('/app',"IndexController@app");
+/**
+ * YonSuite质量全景分析
+ */
+//初始化页面
+Route::get('/ys/index',"YsController@index");
+//初始化版本号
+Route::get('/ys/getVersion',"VersionController@getVersion");
+//初始化集成号
+Route::get('/ys/getIntegrate',"IntegrateController@getIntegrate");
+//获取资源
+Route::get('/ys/getYSResource',"YsController@getYSResource");
 
 
 //文章列表页
@@ -30,52 +41,64 @@ Route::post ('/login', 'LoginController@login');
 
 //需要登录验证的页面
 Route::group ([
-	'middleware' => 'auth'
+	'middleware' => 'auth:web'
 	],function(){
-		//登出行为
-		Route::get('/logout','LoginController@logout' );
-		Route::get('/u8',"IndexController@u8");
-		//初始化页面
-		Route::get('ys/index',"YsController@index");
+	//登出行为
+	Route::get('/logout','LoginController@logout' );
+	//首页U8C
+	Route::get('/u8',"IndexController@u8");
+	//测试工具链接基下载
+	Route:: get( "/camp/ult", "IndexController@ult" );
+	Route:: get( "/camp/mtt", "IndexController@mtt" );
+	Route:: get( "/camp/sett", "IndexController@sett" );
+	Route:: get( "/camp/dult", "IndexController@dult" );
+	Route:: get( "/camp/pct", "IndexController@pct" );
+	Route:: get( "/camp/js", "IndexController@js" );
+	Route:: get( "/camp/lsbcx", "IndexController@lsbcx" );
+	Route:: get( "/camp/gdi", "IndexController@gdi" );
+	Route:: get( "/camp/sjkjgdb", "IndexController@sjkjgdb" );
+	Route:: get( "/camp/wj", "IndexController@wj" );
+	Route:: get( "/camp/xn", "IndexController@xn" );
+	Route:: get( "/camp/ylzx", "IndexController@ylzx" );
+	
+	//个人设置
+	Route::get('/user/me/setting','UserController@setting' );
+	//个人设置操作
+	Route::post('/user/me/setting','UserController@settingStore' );
 
-		//个人设置
-		Route::get('/user/me/setting','UserController@setting' );
-		//个人设置操作
-		Route::post('/user/me/setting','UserController@settingStore' );
+	//创建文章
+	Route::post('/posts','PostController@store' );
+	Route::get('/posts/create','PostController@create' );
+	// 文章搜索页
+	Route::post('/posts/search', 'PostController@search');
+	//更新文章
+	Route::get('/posts/{post}/edit','PostController@edit')->where('post','[0-9]+');
+	Route::put('/posts/{post}','PostController@update' )->where('post','[0-9]+');
+	//删除文章
+	Route::get('/posts/{post}/delete','PostController@delete' )->where('post','[0-9]+');
+	
+	//图片上传
+	Route::post('/posts/image/upload','PostController@imageUpload');
+	//提交评论
+	Route::post('/posts/{post}/comment','PostController@comment')->where('post','[0-9]+');
+	// 赞
+	Route::get('/posts/{post}/zan', 'PostController@zan')->where('post','[0-9]+');
+	// 取消赞
+	Route::get('/posts/{post}/unzan', 'PostController@unzan')->where('post','[0-9]+');
 
-		//创建文章
-		Route::post('/posts','PostController@store' );
-		Route::get('/posts/create','PostController@create' );
-		// 文章搜索页
-		Route::post('/posts/search', 'PostController@search');
-		//更新文章
-		Route::get('/posts/{post}/edit','PostController@edit')->where('post','[0-9]+');
-		Route::put('/posts/{post}','PostController@update' )->where('post','[0-9]+');
-		//删除文章
-		Route::get('/posts/{post}/delete','PostController@delete' )->where('post','[0-9]+');
-		
-		//图片上传
-		Route::post('/posts/image/upload','PostController@imageUpload');
-		//提交评论
-		Route::post('/posts/{post}/comment','PostController@comment')->where('post','[0-9]+');
-		// 赞
-		Route::get('/posts/{post}/zan', 'PostController@zan')->where('post','[0-9]+');
-		// 取消赞
-		Route::get('/posts/{post}/unzan', 'PostController@unzan')->where('post','[0-9]+');
+	//个人中心
+	Route::get('/user/{user}', 'UserController@show')->where('user','[0-9]+');
+	//关注
+	Route::post('/user/{user}/fan', 'UserController@fan')->where('user','[0-9]+');
+	//取消关注
+	Route::post('/user/{user}/unfan', 'UserController@unfan')->where('user','[0-9]+');
 
-		//个人中心
-		Route::get('/user/{user}', 'UserController@show')->where('user','[0-9]+');
-		//关注
-		Route::post('/user/{user}/fan', 'UserController@fan')->where('user','[0-9]+');
-		//取消关注
-		Route::post('/user/{user}/unfan', 'UserController@unfan')->where('user','[0-9]+');
-
-		//专题详情页
-		Route::get('/topic/{topic}', 'TopicController@show')->where('topic','[0-9]+');
-		//投稿
-		Route::post('/topic/{topic}/submit', 'TopicController@submit')->where('topic','[0-9]+');
-		// 通知
-		Route::get('/notices', 'NoticeController@index');
+	//专题详情页
+	Route::get('/topic/{topic}', 'TopicController@show')->where('topic','[0-9]+');
+	//投稿
+	Route::post('/topic/{topic}/submit', 'TopicController@submit')->where('topic','[0-9]+');
+	// 通知
+	Route::get('/notices', 'NoticeController@index');
 });
 
 
@@ -112,45 +135,6 @@ Route::group([
         ->where(['integrate','[0-9]+'],['version','[0-9]+'],['enumType','[0-9]+']);
     Route::match(['get','post'],'resource/download','ResourceController@download');
 });
-
-
-/**
- * YonSuite质量全景分析
- */
-
-    Route::group ( [
-        'prefix' => 'ys',
-    ], function () {
-        //初始化版本号
-        Route::get('/getVersion',"VersionController@getVersion");
-        //初始化集成号
-        Route::get('/getIntegrate',"IntegrateController@getIntegrate");
-        //获取资源
-        Route::get('/getYSResource',"YsController@getYSResource");
-
-    } );
-
-
-
-//测试工具链接基下载
-Route::group ( [
-    'prefix'=>'camp',
-    'middleware' => 'auth'
-], function () {
-    Route:: get( "/ult", "IndexController@ult" );
-    Route:: get( "/mtt", "IndexController@mtt" );
-    Route:: get( "/sett", "IndexController@sett" );
-    Route:: get( "/dult", "IndexController@dult" );
-    Route:: get( "/pct", "IndexController@pct" );
-    Route:: get( "/js", "IndexController@js" );
-    Route:: get( "/lsbcx", "IndexController@lsbcx" );
-    Route:: get( "/gdi", "IndexController@gdi" );
-    Route:: get( "/sjkjgdb", "IndexController@sjkjgdb" );
-    Route:: get( "/wj", "IndexController@wj" );
-    Route:: get( "/xn", "IndexController@xn" );
-    Route:: get( "/ylzx", "IndexController@ylzx" );
-} );
-
 
 
 // 管理后台
@@ -204,14 +188,4 @@ Route::group([
         });
     });
 
-});
-
-
-
-/**
- * 兜底路由，一般默认404页面
- */
-
-Route::fallback(function () {
-    //TODO
 });

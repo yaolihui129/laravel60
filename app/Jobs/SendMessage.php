@@ -19,7 +19,6 @@ class SendMessage implements ShouldQueue
      */
     public function __construct(\App\Model\Notice $notice)
     {
-        //
 		$this->notice = $notice;
     }
 
