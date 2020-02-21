@@ -47,9 +47,11 @@
         "zhusaidong/laravel-admin-grid-exporter": "^0.1.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.6",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
+        "mpociot/laravel-test-factory-helper": "^2.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0"
     },

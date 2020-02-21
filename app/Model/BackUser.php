@@ -3,6 +3,26 @@
 namespace App\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * App\Model\BackUser
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $password
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Model\BackRole[] $roles
+ * @property-read int|null $roles_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackUser whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class BackUser extends Authenticatable{
     protected $rememberTokenName = '';
     

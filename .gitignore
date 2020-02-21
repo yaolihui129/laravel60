@@ -1,6 +1,6 @@
 .idea/
 .vscode/
-.settings/
+/.settings/
 nbproject/
 /vendor/
 node_modules/

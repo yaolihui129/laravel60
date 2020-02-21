@@ -3,6 +3,37 @@ namespace App\Model;
 use App\Model;
 use Illuminate\Database\Eloquent\Builder; 
 use Laravel\Scout\Searchable;
+/**
+ * App\Model\Post
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $content
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $status
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Model\Comment[] $Comments
+ * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Model\PostTopic[] $postTopics
+ * @property-read int|null $post_topics_count
+ * @property-read \App\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Model\Zan[] $zans
+ * @property-read int|null $zans_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post authorBy($user_id)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post topicNotBy($topic_id)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\Post whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Post extends Model{
 	use Searchable;
 	

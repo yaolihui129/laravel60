@@ -4,6 +4,26 @@ namespace App\Model;
 
 use App\Model;
 
+/**
+ * App\Model\BackRole
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Model\BackPermission[] $permissions
+ * @property-read int|null $permissions_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Model\BackRole whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class BackRole extends Model{
     protected $table = "back_roles";
     

@@ -178,7 +178,9 @@ return [
 		Laravel\Scout\ScoutServiceProvider::class,
 		ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
 		// debugbar
-		Barryvdh\Debugbar\ServiceProvider::class,
+		Barryvdh\Debugbar\ServiceProvider::class, 
+		Mpociot\LaravelTestFactoryHelper\TestFactoryHelperServiceProvider::class,      
+		Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, 
 
     ],
 
